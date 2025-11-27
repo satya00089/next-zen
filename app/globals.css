@@ -8,11 +8,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hero-text: #fff;
+  /* Brand / accent colors */
+  --brand: #6366f1;
+  /* indigo-500 */
+  --accent: #ec4899;
 }
 
 html.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --hero-text: #fff;
+  /* Brand / accent colors (adjusted for dark) */
+  --brand: #8b5cf6;
+  /* slightly brighter indigo */
+  --accent: #f472b6;
 }
 
 @theme inline {
