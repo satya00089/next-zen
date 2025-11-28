@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   // If your repo name is not the root domain, add basePath
-  basePath: '/next-zen',
-  assetPrefix: '/next-zen',
+  // basePath: '/next-zen',
+  // assetPrefix: '/next-zen',
 };
 
 export default nextConfig;
