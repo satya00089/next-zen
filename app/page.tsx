@@ -1,11 +1,52 @@
 "use client";
 
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useThemeContext } from "@/contexts/ThemeContext";
+import { useEffect, useState, useMemo } from "react";
+import Image from "next/image";
+import { FaAws, FaMicrosoft, FaShieldAlt, FaCode } from "react-icons/fa";
+import { SiGooglecloud, SiAmazonec2 } from "react-icons/si";
+import { MdAccountTree, MdStorage } from "react-icons/md";
+
+interface FloatingIconProps {
+  icon: React.ReactNode;
+  delay: number;
+  duration: number;
+  x: string;
+  y: string;
+}
+
+const FloatingIcon: React.FC<FloatingIconProps> = ({ icon, delay, duration, x, y }) => {
+  const { theme } = useThemeContext();
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        opacity: theme === "dark" ? 0.08 : 0.15,
+        fontSize: "64px",
+        color: theme === "dark" ? "#8b5cf6" : "#6366f1",
+        animation: `float ${duration}s ease-in-out infinite`,
+        animationDelay: `${delay}s`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {icon}
+    </div>
+  );
+};
 
 export default function Home() {
+  const { theme } = useThemeContext();
   const [showHeaderShadow, setShowHeaderShadow] = useState(false);
+  
+  const orchestratorImg = useMemo(() => 
+    theme === 'dark' ? '/orchestrator-dark.png' : '/orchestrator-light.png',
+    [theme]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +59,7 @@ export default function Home() {
   }, []);
 
   const navigate = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -45,6 +86,16 @@ export default function Home() {
 
       {/* Animated Background Architecture Diagram */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12] z-0">
+        {/* Floating Icons */}
+        <FloatingIcon icon={<FaAws size={64} />} delay={0} duration={8} x="5%" y="10%" />
+        <FloatingIcon icon={<FaMicrosoft size={64} />} delay={1} duration={9} x="15%" y="25%" />
+        <FloatingIcon icon={<SiGooglecloud size={64} />} delay={2} duration={10} x="85%" y="15%" />
+        <FloatingIcon icon={<SiAmazonec2 size={64} />} delay={3} duration={11} x="90%" y="30%" />
+        <FloatingIcon icon={<MdAccountTree size={64} />} delay={1.5} duration={9} x="10%" y="70%" />
+        <FloatingIcon icon={<MdStorage size={64} />} delay={2.5} duration={10} x="80%" y="75%" />
+        <FloatingIcon icon={<FaShieldAlt size={64} />} delay={3} duration={11} x="90%" y="85%" />
+        <FloatingIcon icon={<FaCode size={64} />} delay={0.5} duration={8} x="5%" y="85%" />
+        
         {/* Connection lines */}
         <svg
           className="absolute inset-0 w-full h-full"
@@ -232,7 +283,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <span className="text-xl font-bold text-(--hero-text)">Next Zen</span>
+              <span className="text-xl font-bold text-(--hero-text)">
+                Next Zen
+              </span>
             </div>
             <div className="flex items-center gap-4">
               <ThemeSwitcher />
@@ -347,29 +400,36 @@ export default function Home() {
                 Build faster. Visualize better. Automate smarter.
               </p>
               <p className="text-lg text-(--hero-text)/80 max-w-2xl mx-auto mb-8">
-                All-in-one platform for workflow automation and interactive system design.
+                All-in-one platform for workflow automation and interactive
+                system design.
               </p>
 
               {/* Stats Bar */}
               <div className="flex flex-wrap justify-center gap-8 mb-12">
                 {[
-                  { icon: '🚀', value: '2', label: 'Powerful Products' },
-                  { icon: '👥', value: '1000+', label: 'Active Users' },
-                  { icon: '✨', value: '∞', label: 'Possibilities' },
+                  { icon: "🚀", value: "2", label: "Powerful Products" },
+                  { icon: "👥", value: "1000+", label: "Active Users" },
+                  { icon: "✨", value: "∞", label: "Possibilities" },
                 ].map((stat, index) => {
                   const getDelayClass = () => {
-                    if (index === 0) return 'fade-in-up-delay-100';
-                    if (index === 1) return 'fade-in-up-delay-200';
-                    return 'fade-in-up-delay-300';
+                    if (index === 0) return "fade-in-up-delay-100";
+                    if (index === 1) return "fade-in-up-delay-200";
+                    return "fade-in-up-delay-300";
                   };
                   return (
                     <div
                       key={stat.label}
                       className={`text-center transition-all duration-500 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 hover:bg-white/20 hover:scale-105 shadow-lg ${getDelayClass()}`}
-                      style={{ animation: 'fade-in-up 0.8s', animationDelay: `${0.1 * (index + 1)}s`, animationFillMode: 'both' }}
+                      style={{
+                        animation: "fade-in-up 0.8s",
+                        animationDelay: `${0.1 * (index + 1)}s`,
+                        animationFillMode: "both",
+                      }}
                     >
                       <div className="text-3xl mb-1">{stat.icon}</div>
-                      <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                      <div className="text-3xl font-bold text-white mb-1">
+                        {stat.value}
+                      </div>
                       <div className="text-sm text-white/80">{stat.label}</div>
                     </div>
                   );
@@ -415,73 +475,79 @@ export default function Home() {
             Whether you&apos;re automating workflows or designing systems —
             we&apos;ve got you covered
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
             {/* Orchestrator Card */}
             <a
               href="https://orchestrator.next-zen.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-white dark:bg-[#1f2937] rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 p-8 border border-[#e5e7eb] dark:border-[#374151] hover:-translate-y-2"
+              className="group relative rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <div className="mb-6">
-                  <div className="relative inline-block">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#6366f1] to-[#ad63c7] dark:from-[#8b5cf6] dark:to-[#bd6cd5] rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-[#6366f1] to-[#ad63c7] dark:from-[#8b5cf6] dark:to-[#bd6cd5] rounded-2xl flex items-center justify-center text-4xl">
-                      <svg
-                        className="w-10 h-10 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                        />
-                      </svg>
+              <div className="relative h-[400px]">
+                {/* Full-width Image */}
+                <Image
+                  key={orchestratorImg}
+                  src={orchestratorImg}
+                  alt="Orchestrator Preview"
+                  fill
+                  className="object-cover group-hover:scale-102 transition-transform duration-700"
+                  priority
+                />
+
+                {/* Fade overlay - last 30% */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent from-50% to-background" />
+
+                {/* Content Section - positioned on top right */}
+                <div className="absolute right-0 top-0 bottom-0 w-[30%] p-6 flex flex-col justify-center bg-background/30 backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative z-10">
+                    <div className="mb-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[#6366f1] to-[#ad63c7] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <svg
+                          className="w-7 h-7 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <h2 className="text-xl font-bold mb-2 group-hover:text-[#6366f1] dark:group-hover:text-[#8b5cf6] transition-colors duration-300">
+                      Orchestrator
+                    </h2>
+
+                    <p className="text-xs text-[#6b7280] dark:text-[#9ca3af] mb-3 leading-relaxed">
+                      Streamline your workflow with powerful automation and
+                      orchestration capabilities.
+                    </p>
+
+                    <div className="space-y-1.5 mb-3">
+                      <div className="flex items-center text-xs text-[#6b7280] dark:text-[#d1d5db]">
+                        <span className="mr-2 text-base">⚡</span> Visual
+                        workflow builder
+                      </div>
+                      <div className="flex items-center text-xs text-[#6b7280] dark:text-[#d1d5db]">
+                        <span className="mr-2 text-base">🔗</span> Pre-built
+                        integrations
+                      </div>
+                      <div className="flex items-center text-xs text-[#6b7280] dark:text-[#d1d5db]">
+                        <span className="mr-2 text-base">📊</span> Real-time
+                        monitoring
+                      </div>
+                    </div>
+
+                    <div className="inline-flex items-center gap-1 text-xs text-[#6366f1] dark:text-[#8b5cf6] font-semibold">
+                      Explore →
                     </div>
                   </div>
-                </div>
-                <h2 className="text-3xl font-bold mb-4 group-hover:text-[#6366f1] dark:group-hover:text-[#8b5cf6] transition-colors duration-300">
-                  Orchestrator
-                </h2>
-                <p className="text-lg text-[#6b7280] dark:text-[#9ca3af] mb-6 leading-relaxed">
-                  Streamline your workflow with powerful automation and
-                  orchestration capabilities. Build complex workflows with ease
-                  and boost your team&apos;s productivity.
-                </p>
-                <div className="mb-6 space-y-3">
-                  <div className="flex items-center text-sm text-[#6b7280] dark:text-[#d1d5db]">
-                    <span className="mr-3 text-xl">⚡</span> Visual workflow
-                    builder
-                  </div>
-                  <div className="flex items-center text-sm text-[#6b7280] dark:text-[#d1d5db]">
-                    <span className="mr-3 text-xl">🔗</span> Pre-built
-                    integrations
-                  </div>
-                  <div className="flex items-center text-sm text-[#6b7280] dark:text-[#d1d5db]">
-                    <span className="mr-3 text-xl">📊</span> Real-time
-                    monitoring
-                  </div>
-                </div>
-                <div className="inline-flex items-center gap-2 text-sm text-[#6366f1] dark:text-[#8b5cf6] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  Explore Orchestrator
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
                 </div>
               </div>
             </a>

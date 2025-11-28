@@ -1,10 +1,10 @@
 "use client";
 
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useThemeContext();
 
   const handleToggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
