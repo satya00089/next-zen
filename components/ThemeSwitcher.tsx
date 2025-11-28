@@ -1,10 +1,10 @@
 "use client";
 
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useThemeContext();
 
   const handleToggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -16,12 +16,15 @@ export default function ThemeSwitcher() {
       onClick={handleToggle}
       className="p-2 rounded-full bg-background text-foreground cursor-pointer"
       aria-label="Toggle theme"
+      suppressHydrationWarning
     >
-      {theme === "light" ? (
-        <FiMoon className="w-5 h-5" />
-      ) : (
-        <FiSun className="w-5 h-5" />
-      )}
+      <span suppressHydrationWarning>
+        {theme === "light" ? (
+          <FiMoon className="w-5 h-5" />
+        ) : (
+          <FiSun className="w-5 h-5" />
+        )}
+      </span>
     </button>
   );
 }
