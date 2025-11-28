@@ -13,6 +13,17 @@
   --brand: #6366f1;
   /* indigo-500 */
   --accent: #ec4899;
+  /* Text colors */
+  --text-muted: #6b7280;
+  --text-secondary: #9ca3af;
+  /* Shadow values */
+  --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --shadow-footer: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  /* Card backgrounds */
+  --card-bg: rgba(255, 255, 255, 0.5);
+  --card-bg-hover: #ffffff;
 }
 
 html.dark {
@@ -23,11 +34,24 @@ html.dark {
   --brand: #8b5cf6;
   /* slightly brighter indigo */
   --accent: #f472b6;
+  /* Text colors */
+  --text-muted: #d1d5db;
+  --text-secondary: #9ca3af;
+  /* Shadow values */
+  --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --shadow-footer: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  /* Card backgrounds */
+  --card-bg: rgba(31, 41, 55, 0.5);
+  --card-bg-hover: #1f2937;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-text-muted: var(--text-muted);
+  --color-text-secondary: var(--text-secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
