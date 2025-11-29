@@ -339,9 +339,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <span className="text-xl font-bold text-(--hero-text)">
-                Next Zen
-              </span>
+              <Image src="/logo.png" alt="Logo" width={64} height={64} className="object-contain" />
             </div>
             <div className="flex items-center gap-4">
               <ThemeSwitcher />
@@ -793,13 +791,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 shadow-[var(--shadow-footer)] relative z-10">
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 shadow-[var(--shadow-footer)] relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center space-x-3">
-              <span className="text-xl font-bold">Next Zen</span>
+          <div className="flex flex-row md:flex-col justify-between items-center gap-4">
+            <div className="flex items-center justify-start w-full md:w-auto">
+              <Image src="/logo-brand.png" alt="Logo" width={180} height={48} className="object-contain" />
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center justify-end w-full md:w-auto space-x-6">
               <a
                 href="https://github.com/satya00089/next-zen"
                 target="_blank"
