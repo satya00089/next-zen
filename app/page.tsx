@@ -4,9 +4,14 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { useThemeContext } from "@/contexts/ThemeContext";
 import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
-import { FaAws, FaMicrosoft, FaShieldAlt, FaCode, FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiGooglecloud, SiAmazonec2 } from "react-icons/si";
-import { MdAccountTree, MdStorage } from "react-icons/md";
+import { FaAws, FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  SiGooglecloud,
+  SiAmazonec2,
+  SiGooglecloudstorage,
+  SiAwselasticloadbalancing,
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 
 interface FloatingIconProps {
   icon: React.ReactNode;
@@ -14,6 +19,7 @@ interface FloatingIconProps {
   duration: number;
   x: string;
   y: string;
+  style?: React.CSSProperties;
 }
 
 const FloatingIcon: React.FC<FloatingIconProps> = ({
@@ -22,23 +28,26 @@ const FloatingIcon: React.FC<FloatingIconProps> = ({
   duration,
   x,
   y,
+  style = {},
 }) => {
   const { theme } = useThemeContext();
   return (
     <div
       suppressHydrationWarning
+      className="text-white"
       style={{
         position: "absolute",
         left: x,
         top: y,
-        opacity: theme === "dark" ? 0.08 : 0.15,
+        opacity: style.opacity ?? (theme === "dark" ? 0.08 : 0.15),
+        zIndex: style.zIndex ?? undefined,
         fontSize: "64px",
-        color: theme === "dark" ? "#8b5cf6" : "#6366f1",
         animation: `float ${duration}s ease-in-out infinite`,
         animationDelay: `${delay}s`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        ...style,
       }}
     >
       {icon}
@@ -94,64 +103,6 @@ export default function Home() {
 
       {/* Animated Background Architecture Diagram */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12] z-0">
-        {/* Floating Icons */}
-        <FloatingIcon
-          icon={<FaAws size={64} />}
-          delay={0}
-          duration={8}
-          x="5%"
-          y="10%"
-        />
-        <FloatingIcon
-          icon={<FaMicrosoft size={64} />}
-          delay={1}
-          duration={9}
-          x="15%"
-          y="25%"
-        />
-        <FloatingIcon
-          icon={<SiGooglecloud size={64} />}
-          delay={2}
-          duration={10}
-          x="85%"
-          y="15%"
-        />
-        <FloatingIcon
-          icon={<SiAmazonec2 size={64} />}
-          delay={3}
-          duration={11}
-          x="90%"
-          y="30%"
-        />
-        <FloatingIcon
-          icon={<MdAccountTree size={64} />}
-          delay={1.5}
-          duration={9}
-          x="10%"
-          y="70%"
-        />
-        <FloatingIcon
-          icon={<MdStorage size={64} />}
-          delay={2.5}
-          duration={10}
-          x="80%"
-          y="75%"
-        />
-        <FloatingIcon
-          icon={<FaShieldAlt size={64} />}
-          delay={3}
-          duration={11}
-          x="90%"
-          y="85%"
-        />
-        <FloatingIcon
-          icon={<FaCode size={64} />}
-          delay={0.5}
-          duration={8}
-          x="5%"
-          y="85%"
-        />
-
         {/* Connection lines */}
         <svg
           className="absolute inset-0 w-full h-full"
@@ -339,7 +290,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <Image src="/logo.png" alt="Logo" width={64} height={64} className="object-contain" />
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
             </div>
             <div className="flex items-center gap-4">
               <ThemeSwitcher />
@@ -359,6 +316,61 @@ export default function Home() {
                 "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
               backgroundSize: "50px 50px",
             }}
+          />
+
+          {/* Floating Icons in Hero */}
+          <FloatingIcon
+            icon={<FaAws size={64} />}
+            delay={0}
+            duration={8}
+            x="20%"
+            y="10%"
+            style={{ opacity: 0.25, zIndex: 50 }}
+          />
+
+          <FloatingIcon
+            icon={<SiGooglecloudstorage size={42} />}
+            delay={1}
+            duration={9}
+            x="10%"
+            y="45%"
+            style={{ opacity: 0.25, zIndex: 50 }}
+          />
+
+          <FloatingIcon
+            icon={<SiAmazonec2 size={42} />}
+            delay={1}
+            duration={9}
+            x="15%"
+            y="75%"
+            style={{ opacity: 0.25, zIndex: 50 }}
+          />
+
+          <FloatingIcon
+            icon={<SiGooglecloud size={64} />}
+            delay={2}
+            duration={10}
+            x="75%"
+            y="15%"
+            style={{ opacity: 0.25, zIndex: 50 }}
+          />
+
+          <FloatingIcon
+            icon={<SiAwselasticloadbalancing size={42} />}
+            delay={1}
+            duration={9}
+            x="85%"
+            y="45%"
+            style={{ opacity: 0.25, zIndex: 50 }}
+          />
+
+          <FloatingIcon
+            icon={<VscAzure size={64} />}
+            delay={1}
+            duration={9}
+            x="80%"
+            y="75%"
+            style={{ opacity: 0.25, zIndex: 50 }}
           />
 
           {/* Animated decorative diagram */}
@@ -590,7 +602,8 @@ export default function Home() {
                         assistance
                       </div>
                       <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">🎯</span> Problem solving
+                        <span className="mr-2 text-base">🎯</span> Problem
+                        solving
                       </div>
                       <div className="flex items-center text-s text-[var(--text-muted)]">
                         <span className="mr-2 text-base">👥</span> Real-time
@@ -685,7 +698,7 @@ export default function Home() {
       </section>
 
       {/* Capabilities Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-[#f8f9fa]/30 to-transparent dark:via-[#111111]/30 relative z-10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Powerful Features
@@ -795,7 +808,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-row md:flex-col justify-between items-center gap-4">
             <div className="flex items-center justify-start w-full md:w-auto">
-              <Image src="/logo-brand.png" alt="Logo" width={180} height={48} className="object-contain" />
+              <Image
+                src="/logo-brand.png"
+                alt="Logo"
+                width={180}
+                height={48}
+                className="object-contain"
+              />
             </div>
             <div className="flex items-center justify-end w-full md:w-auto space-x-6">
               <a
@@ -827,13 +846,13 @@ export default function Home() {
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
+          50% { transform: translateY(-10px) rotate(5deg); }
         }
         .animate-float {
-          animation: float 6s ease-in-out infinite;
+          animation: float 12s ease-in-out infinite;
         }
         .animate-float-delayed {
-          animation: float 8s ease-in-out infinite;
+          animation: float 12s ease-in-out infinite;
           animation-delay: 1s;
         }
       `}</style>
