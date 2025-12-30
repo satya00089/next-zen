@@ -534,16 +534,117 @@ export default function Home() {
               Our Products
             </h2>
             <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">
-              Choose your tool, transform your workflow. Hover to explore each product.
+              Three powerful tools to amplify your development. Hover to explore each product.
             </p>
           </div>
 
           {/* Split Container */}
           <div className="products-accordion min-h-[600px] lg:min-h-[700px] rounded-3xl overflow-hidden shadow-2xl">
-            {/* Left Half - Diagrammatic */}
+            {/* First - Learn Algo */}
             <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
               <a
-                href="https://diagrammatic.next-zen.dev"
+                href="https://learn-algo.com?utm_source=next-zen.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/learn-algo-dark.png"
+                        : "/learn-algo-light.png"
+                    }
+                    alt="Learn Algo"
+                    fill
+                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    priority
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-br from-[#3b82f6]/90 via-[#2563eb]/80 to-[#1d4ed8]/90 group-hover:from-[#3b82f6]/70 group-hover:via-[#2563eb]/60 group-hover:to-[#1d4ed8]/70 transition-all duration-700"></div>
+                </div>
+
+                {/* Content */}
+                <div className="product-content relative z-10 text-white text-center px-8">
+                  {/* Logo */}
+                  <div className="mb-6 flex justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+                      <Image
+                        src="/learn-algo-logo.png"
+                        alt="Learn Algo"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                        style={{
+                          filter: theme === "dark" ? "invert(1) brightness(1.2)" : "none"
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-5xl md:text-7xl font-black mb-4 leading-none">
+                    Learn Algo
+                  </h3>
+
+                  {/* Tagline */}
+                  <p className="text-xl md:text-2xl font-bold mb-4 opacity-90">
+                    See Algorithms in Motion
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-base md:text-lg mb-6 opacity-80 max-w-2xl mx-auto">
+                    Master algorithms through interactive visualizations. Watch sorting, searching, and ML algorithms execute step-by-step.
+                  </p>
+
+                  {/* Features */}
+                  <div className="flex flex-col gap-3 items-center">
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🎯</span>
+                      <span className="text-base font-semibold">
+                        20+ Algorithms
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">⚡</span>
+                      <span className="text-base font-semibold">
+                        DSA, ML & AI
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🎓</span>
+                      <span className="text-base font-semibold">
+                        100% Interactive
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background text-[#3b82f6] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                    <span>Explore Now</span>
+                    <span className="text-2xl group-hover:translate-x-2 transition-transform">
+                      →
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Vertical Title (shown when collapsed) */}
+                <div className="product-vertical-title absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-4xl font-black text-white transform -rotate-90 whitespace-nowrap">
+                    Learn Algo
+                  </h3>
+                </div>
+              </a>
+            </div>
+
+            {/* Divider Line */}
+            <div className="w-1 bg-linear-to-b from-transparent via-white/30 to-transparent"></div>
+
+            {/* Second - Diagrammatic */}
+            <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
+              <a
+                href="https://diagrammatic.next-zen.dev?utm_source=next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center"
@@ -620,7 +721,7 @@ export default function Home() {
                   </div>
 
                   {/* CTA */}
-                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#10b981] px-8 py-5 rounded-lg text-xl font-black shadow-2xl group-hover/left:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#10b981] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover/left:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
                     <span>Explore Now</span>
                     <span className="text-2xl group-hover/left:translate-x-2 transition-transform">
                       →
@@ -640,10 +741,10 @@ export default function Home() {
             {/* Divider Line */}
             <div className="w-1 bg-linear-to-b from-transparent via-white/30 to-transparent"></div>
 
-            {/* Right Half - Orchestrator */}
+            {/* Third - Orchestrator */}
             <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
               <a
-                href="https://orchestrator.next-zen.dev"
+                href="https://orchestrator.next-zen.dev?utm_source=next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center"
@@ -720,7 +821,7 @@ export default function Home() {
                   </div>
 
                   {/* CTA */}
-                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#6366f1] dark:text-[#8b5cf6] px-8 py-5 rounded-full text-xl font-black shadow-2xl group-hover/right:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#6366f1] dark:text-[#8b5cf6] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover/right:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
                     <span>Explore Now</span>
                     <span className="text-2xl group-hover/right:translate-x-2 transition-transform">
                       →
