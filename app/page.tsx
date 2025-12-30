@@ -2,7 +2,7 @@
 
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { useThemeContext } from "@/contexts/ThemeContext";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaAws, FaGithub, FaLinkedin } from "react-icons/fa";
 import {
@@ -58,12 +58,6 @@ const FloatingIcon: React.FC<FloatingIconProps> = ({
 export default function Home() {
   const { theme } = useThemeContext();
   const [showHeaderShadow, setShowHeaderShadow] = useState(false);
-
-  const orchestratorImg = useMemo(
-    () =>
-      theme === "dark" ? "/orchestrator-dark.png" : "/orchestrator-light.png",
-    [theme]
-  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -531,168 +525,330 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Products to Elevate Your Development
-          </h2>
-          <p className="text-center text-[var(--text-secondary)] mb-16 text-lg max-w-2xl mx-auto">
-            Whether you&apos;re automating workflows or designing systems —
-            we&apos;ve got you covered
-          </p>
-          <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
-            {/* Diagrammatic Card */}
-            <a
-              href="https://diagrammatic.next-zen.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-3xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-lg)] transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-            >
-              <div className="relative h-[550px]">
-                {/* Full-width Image */}
-                <Image
-                  src={
-                    theme === "dark"
-                      ? "/diagrammatic-dark.png"
-                      : "/diagrammatic-light.png"
-                  }
-                  alt="Diagrammatic Preview"
-                  fill
-                  className="object-cover group-hover:scale-102 transition-transform duration-700"
-                />
+      {/* Products Section - Interactive Split Screen Experience */}
+      <section className="relative z-10 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 bg-linear-to-r from-[#10b981] via-[#6366f1] to-[#8b5cf6] bg-clip-text text-transparent">
+              Our Products
+            </h2>
+            <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">
+              Three powerful tools to amplify your development. Hover to explore each product.
+            </p>
+          </div>
 
-                {/* Fade overlay - last 30% */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent from-50% to-background" />
+          {/* Split Container */}
+          <div className="products-accordion min-h-[600px] lg:min-h-[700px] rounded-3xl overflow-hidden shadow-2xl">
+            {/* First - Learn Algo */}
+            <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
+              <a
+                href="https://learn-algo.com?utm_source=next-zen.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/learn-algo-dark.png"
+                        : "/learn-algo-light.png"
+                    }
+                    alt="Learn Algo"
+                    fill
+                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    priority
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-br from-[#3b82f6]/90 via-[#2563eb]/80 to-[#1d4ed8]/90 group-hover:from-[#3b82f6]/70 group-hover:via-[#2563eb]/60 group-hover:to-[#1d4ed8]/70 transition-all duration-700"></div>
+                </div>
 
-                {/* Content Section - positioned on top right */}
-                <div className="absolute right-0 top-0 bottom-0 w-[30%] p-6 flex flex-col justify-center bg-background/30 backdrop-blur-sm">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="relative z-10">
-                    <div className="mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#10b981] to-[#14b8a6] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-                        <Image
-                          src="/diagrammatic-logo.png"
-                          alt="Diagrammatic Logo"
-                          width={40}
-                          height={40}
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-
-                    <h2 className="text-xl font-bold mb-2 group-hover:text-[#10b981] dark:group-hover:text-[#34d399] transition-colors duration-300">
-                      Diagrammatic
-                    </h2>
-
-                    <p className="text-s text-[var(--text-secondary)] mb-3 leading-relaxed">
-                      Create beautiful diagrams and visualizations effortlessly.
-                      Perfect for system architecture, flowcharts, and technical
-                      documentation.
-                    </p>
-
-                    <div className="space-y-1.5 mb-3">
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">🧩</span> 75+ diagram
-                        components
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">⚡</span> AI-powered
-                        assistance
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">🎯</span> Problem
-                        solving
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">👥</span> Real-time
-                        collaboration
-                      </div>
-                    </div>
-
-                    <div className="inline-flex items-center gap-1 text-xs text-[#10b981] dark:text-[#34d399] font-semibold">
-                      Explore →
+                {/* Content */}
+                <div className="product-content relative z-10 text-white text-center px-8">
+                  {/* Logo */}
+                  <div className="mb-6 flex justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+                      <Image
+                        src="/learn-algo-logo.png"
+                        alt="Learn Algo"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                        style={{
+                          filter: theme === "dark" ? "invert(1) brightness(1.2)" : "none"
+                        }}
+                      />
                     </div>
                   </div>
-                </div>
-              </div>
-            </a>
 
-            {/* Orchestrator Card */}
-            <a
-              href="https://orchestrator.next-zen.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-3xl shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-lg)] transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-            >
-              <div className="relative h-[550px]">
-                {/* Full-width Image */}
-                <Image
-                  key={orchestratorImg}
-                  src={orchestratorImg}
-                  alt="Orchestrator Preview"
-                  fill
-                  className="object-cover group-hover:scale-102 transition-transform duration-700"
-                  priority
-                />
+                  {/* Title */}
+                  <h3 className="text-5xl md:text-7xl font-black mb-4 leading-none">
+                    Learn Algo
+                  </h3>
 
-                {/* Fade overlay - last 30% */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent from-50% to-background" />
+                  {/* Tagline */}
+                  <p className="text-xl md:text-2xl font-bold mb-4 opacity-90">
+                    See Algorithms in Motion
+                  </p>
 
-                {/* Content Section - positioned on top right */}
-                <div className="absolute right-0 top-0 bottom-0 w-[30%] p-6 flex flex-col justify-center bg-background/30 backdrop-blur-sm">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Description */}
+                  <p className="text-base md:text-lg mb-6 opacity-80 max-w-2xl mx-auto">
+                    Master algorithms through interactive visualizations. Watch sorting, searching, and ML algorithms execute step-by-step.
+                  </p>
 
-                  <div className="relative z-10">
-                    <div className="mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#6366f1] to-[#ad63c7] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-                        <Image
-                          src="/orchestrator-logo.png"
-                          alt="Orchestrator Logo"
-                          width={40}
-                          height={40}
-                          className="object-contain"
-                        />
-                      </div>
+                  {/* Features */}
+                  <div className="flex flex-col gap-3 items-center">
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🎯</span>
+                      <span className="text-base font-semibold">
+                        20+ Algorithms
+                      </span>
                     </div>
-
-                    <h2 className="text-xl font-bold mb-2 group-hover:text-[#6366f1] dark:group-hover:text-[#8b5cf6] transition-colors duration-300">
-                      Orchestrator
-                    </h2>
-
-                    <p className="text-s text-[var(--text-secondary)] mb-3 leading-relaxed">
-                      A visual drag-and-drop platform for designing cloud
-                      infrastructure across AWS, Azure, and GCP. Generate
-                      production-ready Terraform code instantly.
-                    </p>
-
-                    <div className="space-y-1.5 mb-3">
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">🎨</span> Visual Canvas
-                        Design
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">🔗</span> Smart
-                        Resource Linking
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">⚡</span> Instant
-                        Terraform Export
-                      </div>
-                      <div className="flex items-center text-s text-[var(--text-muted)]">
-                        <span className="mr-2 text-base">☁️</span> Multi-Cloud
-                        Support
-                      </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">⚡</span>
+                      <span className="text-base font-semibold">
+                        DSA, ML & AI
+                      </span>
                     </div>
-
-                    <div className="inline-flex items-center gap-1 text-xs text-[#6366f1] dark:text-[#8b5cf6] font-semibold">
-                      Explore →
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🎓</span>
+                      <span className="text-base font-semibold">
+                        100% Interactive
+                      </span>
                     </div>
                   </div>
+
+                  {/* CTA */}
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background text-[#3b82f6] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                    <span>Explore Now</span>
+                    <span className="text-2xl group-hover:translate-x-2 transition-transform">
+                      →
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </a>
+                
+                {/* Vertical Title (shown when collapsed) */}
+                <div className="product-vertical-title absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-4xl font-black text-white transform -rotate-90 whitespace-nowrap">
+                    Learn Algo
+                  </h3>
+                </div>
+              </a>
+            </div>
+
+            {/* Divider Line */}
+            <div className="w-1 bg-linear-to-b from-transparent via-white/30 to-transparent"></div>
+
+            {/* Second - Diagrammatic */}
+            <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
+              <a
+                href="https://diagrammatic.next-zen.dev?utm_source=next-zen.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/diagrammatic-dark.png"
+                        : "/diagrammatic-light.png"
+                    }
+                    alt="Diagrammatic"
+                    fill
+                    className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    priority
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-br from-[#10b981]/90 via-[#10b981]/80 to-[#14b8a6]/90 group-hover:from-[#10b981]/70 group-hover:via-[#10b981]/60 group-hover:to-[#14b8a6]/70 transition-all duration-700"></div>
+                </div>
+
+                {/* Content */}
+                <div className="product-content relative z-10 text-white text-center px-8">
+                  {/* Logo */}
+                  <div className="mb-6 flex justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+                      <Image
+                        src="/diagrammatic-logo.png"
+                        alt="Diagrammatic"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-5xl md:text-7xl font-black mb-4 leading-none">
+                    Diagrammatic
+                  </h3>
+
+                  {/* Tagline */}
+                  <p className="text-xl md:text-2xl font-bold mb-4 opacity-90">
+                    Visual Thinking, Amplified
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-base md:text-lg mb-6 opacity-80 max-w-2xl mx-auto">
+                    Transform complex ideas into beautiful diagrams instantly.
+                    Build flowcharts, mind maps, solve problems, and system
+                    architectures with AI assistance.
+                  </p>
+
+                  {/* Features */}
+                  <div className="flex flex-col gap-3 items-center">
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🤖</span>
+                      <span className="text-base font-semibold">
+                        AI-Powered Diagramming
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">⚡</span>
+                      <span className="text-base font-semibold">
+                        1K+ Components
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">👥</span>
+                      <span className="text-base font-semibold">
+                        Real-time Collaboration
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#10b981] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover/left:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                    <span>Explore Now</span>
+                    <span className="text-2xl group-hover/left:translate-x-2 transition-transform">
+                      →
+                    </span>
+                  </div>
+                </div>
+
+                {/* Vertical Title (shown when collapsed) */}
+                <div className="product-vertical-title absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-4xl font-black text-white transform -rotate-90 whitespace-nowrap">
+                    Diagrammatic
+                  </h3>
+                </div>
+              </a>
+            </div>
+
+            {/* Divider Line */}
+            <div className="w-1 bg-linear-to-b from-transparent via-white/30 to-transparent"></div>
+
+            {/* Third - Orchestrator */}
+            <div className="product-card relative min-h-[600px] lg:min-h-full overflow-hidden group">
+              <a
+                href="https://orchestrator.next-zen.dev?utm_source=next-zen.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/orchestrator-dark.png"
+                        : "/orchestrator-light.png"
+                    }
+                    alt="Orchestrator"
+                    fill
+                    className="object-cover scale-110 group-hover/right:scale-100 transition-transform duration-1000"
+                    priority
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-br from-[#6366f1]/90 via-[#8b5cf6]/80 to-[#ad63c7]/90 dark:from-[#8b5cf6]/90 dark:via-[#9d5cf6]/80 dark:to-[#bd6cd5]/90 group-hover/right:from-[#6366f1]/70 group-hover/right:via-[#8b5cf6]/60 group-hover/right:to-[#ad63c7]/70 transition-all duration-700"></div>
+                </div>
+
+                {/* Content */}
+                <div className="product-content relative z-10 text-white text-center px-8">
+                  {/* Logo */}
+                  <div className="mb-6 flex justify-center">
+                    <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+                      <Image
+                        src="/orchestrator-logo.png"
+                        alt="Orchestrator"
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-5xl md:text-7xl font-black mb-4 leading-none">
+                    Orchestrator
+                  </h3>
+
+                  {/* Tagline */}
+                  <p className="text-xl md:text-2xl font-bold mb-4 opacity-90">
+                    Cloud Infrastructure, Visualized
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-base md:text-lg mb-6 opacity-80 max-w-2xl mx-auto">
+                    Design and deploy cloud infrastructure visually. Drag, drop,
+                    and generate production-ready Terraform code for AWS, Azure,
+                    and GCP.
+                  </p>
+
+                  {/* Features */}
+                  <div className="flex flex-col gap-3 items-center">
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">☁️</span>
+                      <span className="text-base font-semibold">
+                        Multi-Cloud Support
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">⚡</span>
+                      <span className="text-base font-semibold">
+                        Terraform Generation
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-2 rounded-full">
+                      <span className="text-xl">🎨</span>
+                      <span className="text-base font-semibold">
+                        Drag & Drop Canvas
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-8 inline-flex items-center gap-3 bg-background/80 text-[#6366f1] dark:text-[#8b5cf6] px-8 py-5 rounded-lg text-lg font-black shadow-2xl group-hover/right:shadow-[0_20px_60px_rgba(255,255,255,0.3)] transition-shadow duration-500">
+                    <span>Explore Now</span>
+                    <span className="text-2xl group-hover/right:translate-x-2 transition-transform">
+                      →
+                    </span>
+                  </div>
+                </div>
+
+                {/* Vertical Title (shown when collapsed) */}
+                <div className="product-vertical-title absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-4xl font-black text-white transform -rotate-90 whitespace-nowrap">
+                    Orchestrator
+                  </h3>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="hidden lg:block absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+          <div className="flex flex-col items-center gap-2 text-foreground/50">
+            <span className="text-xs font-semibold uppercase tracking-wider">
+              Scroll to Continue
+            </span>
+            <div className="w-6 h-10 border-2 border-current rounded-full flex items-start justify-center p-2">
+              <div className="w-1 h-2 bg-current rounded-full animate-bounce"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -703,49 +859,49 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Powerful Features
           </h2>
-          <p className="text-center text-[var(--text-secondary)] mb-16 text-lg max-w-2xl mx-auto">
+          <p className="text-center text-text-secondary mb-16 text-lg max-w-2xl mx-auto">
             Everything you need to build, automate, and visualize your projects
           </p>
           <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">⚡</div>
               <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Optimized performance for seamless workflow
               </p>
             </div>
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">🔐</div>
               <h3 className="text-xl font-bold mb-2">Secure & Reliable</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Enterprise-grade security with data encryption
               </p>
             </div>
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">👥</div>
               <h3 className="text-xl font-bold mb-2">Team Collaboration</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Built for teams with real-time sync
               </p>
             </div>
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">🌓</div>
               <h3 className="text-xl font-bold mb-2">Dark Mode</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Beautiful themes for any preference
               </p>
             </div>
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">💾</div>
               <h3 className="text-xl font-bold mb-2">Export & Share</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Save and share your work easily
               </p>
             </div>
-            <div className="group text-center p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-sm hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2">
+            <div className="group text-center p-8 rounded-3xl bg-card-bg backdrop-blur-sm hover:bg-card-bg-hover hover:shadow-shadow-card transition-all duration-500 hover:-translate-y-2">
               <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-xl font-bold mb-2">AI-Powered</h3>
-              <p className="text-[var(--text-muted)] leading-relaxed">
+              <p className="text-text-muted leading-relaxed">
                 Smart suggestions and automation
               </p>
             </div>
@@ -755,7 +911,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-[#6366f1] to-[#ad63c7] dark:from-[#8b5cf6] dark:to-[#bd6cd5] rounded-3xl p-12 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center bg-linear-to-r from-[#6366f1] to-[#ad63c7] dark:from-[#8b5cf6] dark:to-[#bd6cd5] rounded-3xl p-12 relative overflow-hidden">
           {/* Grid overlay */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -783,7 +939,7 @@ export default function Home() {
                 href="https://diagrammatic.next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[var(--background)]/80 backdrop-blur-sm text-[var(--accent)] text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 bg-background/80 backdrop-blur-sm text-accent text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Try Diagrammatic
               </a>
@@ -791,7 +947,7 @@ export default function Home() {
                 href="https://orchestrator.next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[var(--background)]/80 backdrop-blur-sm text-[var(--brand)] text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 bg-background/80 backdrop-blur-sm text-brand text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Try Orchestrator
               </a>
@@ -804,7 +960,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 shadow-[var(--shadow-footer)] relative z-10">
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 shadow-shadow-footer relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-row md:flex-col justify-between items-center gap-4">
             <div className="flex items-center justify-start w-full md:w-auto">
@@ -821,7 +977,7 @@ export default function Home() {
                 href="https://github.com/satya00089/next-zen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--brand)] transition-colors"
+                className="hover:text-brand transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="w-6 h-6" />
@@ -830,14 +986,14 @@ export default function Home() {
                 href="https://linkedin.com/company/next-zen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--brand)] transition-colors"
+                className="hover:text-brand transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="w-6 h-6" />
               </a>
             </div>
           </div>
-          <p className="text-[var(--text-muted)] text-sm text-center mt-6">
+          <p className="text-text-muted text-sm text-center mt-6">
             © 2025 Next Zen. Built with ❤️ for developers
           </p>
         </div>
