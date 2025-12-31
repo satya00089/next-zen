@@ -467,8 +467,8 @@ export default function Home() {
               {/* Stats Bar */}
               <div className="flex flex-wrap justify-center gap-8 mb-12">
                 {[
-                  { icon: "🚀", value: "2", label: "Powerful Products" },
-                  { icon: "👥", value: "1000+", label: "Active Users" },
+                  { icon: "🚀", value: "3", label: "Powerful Products" },
+                  { icon: "👥", value: "1K+", label: "Active Users" },
                   { icon: "✨", value: "∞", label: "Possibilities" },
                 ].map((stat, index) => {
                   const getDelayClass = () => {
@@ -499,7 +499,25 @@ export default function Home() {
               <div className="flex flex-row sm:flex-col gap-4 justify-center items-center">
                 <button
                   type="button"
-                  onClick={() => navigate("https://diagrammatic.next-zen.dev/")}
+                  onClick={() =>
+                    navigate("https://learn-algo.com?utm_source=next-zen.dev")
+                  }
+                  className="group px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-lg font-semibold rounded-xl hover:bg-white/20 hover:border-white/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Learn Algo{" "}
+                    <span className="group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    navigate(
+                      "https://diagrammatic.next-zen.dev?utm_source=next-zen.dev"
+                    )
+                  }
                   className="group relative px-8 py-4 bg-(--hero-text) text-(--brand) text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
@@ -511,7 +529,11 @@ export default function Home() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("https://orchestrator.next-zen.dev/")}
+                  onClick={() =>
+                    navigate(
+                      "https://orchestrator.next-zen.dev?utm_source=next-zen.dev"
+                    )
+                  }
                   className="group px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white text-lg font-semibold rounded-xl hover:bg-white/20 hover:border-white/50 hover:scale-105 transition-all duration-300 cursor-pointer"
                 >
                   Orchestrator{" "}
@@ -534,7 +556,8 @@ export default function Home() {
               Our Products
             </h2>
             <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">
-              Three powerful tools to amplify your development. Hover to explore each product.
+              Three powerful tools to amplify your development. Hover to explore
+              each product.
             </p>
           </div>
 
@@ -577,7 +600,10 @@ export default function Home() {
                         height={48}
                         className="object-contain"
                         style={{
-                          filter: theme === "dark" ? "invert(1) brightness(1.2)" : "none"
+                          filter:
+                            theme === "dark"
+                              ? "invert(1) brightness(1.2)"
+                              : "none",
                         }}
                       />
                     </div>
@@ -595,7 +621,8 @@ export default function Home() {
 
                   {/* Description */}
                   <p className="text-base md:text-lg mb-6 opacity-80 max-w-2xl mx-auto">
-                    Master algorithms through interactive visualizations. Watch sorting, searching, and ML algorithms execute step-by-step.
+                    Master algorithms through interactive visualizations. Watch
+                    sorting, searching, and ML algorithms execute step-by-step.
                   </p>
 
                   {/* Features */}
@@ -628,7 +655,7 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-                
+
                 {/* Vertical Title (shown when collapsed) */}
                 <div className="product-vertical-title absolute inset-0 flex items-center justify-center">
                   <h3 className="text-4xl font-black text-white transform -rotate-90 whitespace-nowrap">
@@ -931,12 +958,21 @@ export default function Home() {
               Ready to Start Building?
             </h2>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of developers who trust Next Zen for their workflow
-              automation and system design needs
+              Join thousands of developers who trust Next Zen for their
+              algorithms understanding, workflow automation and system design
+              needs
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
-                href="https://diagrammatic.next-zen.dev"
+                href="https://learn-algo.com?utm_source=next-zen.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-background/80 backdrop-blur-sm text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                Try Learn Algo
+              </a>
+              <a
+                href="https://diagrammatic.next-zen.dev?utm_source=next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-background/80 backdrop-blur-sm text-accent text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
@@ -944,7 +980,7 @@ export default function Home() {
                 Try Diagrammatic
               </a>
               <a
-                href="https://orchestrator.next-zen.dev"
+                href="https://orchestrator.next-zen.dev?utm_source=next-zen.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-background/80 backdrop-blur-sm text-brand text-lg font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
