@@ -452,7 +452,7 @@ export default function Home() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
-                Next Zen.dev
+                Next-Zen.dev
                 <br />
                 Empower Your Ideas.
               </h1>
