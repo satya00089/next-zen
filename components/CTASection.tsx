@@ -22,7 +22,13 @@ export default function CTASection() {
         >
           Build the future
           <br />
-          <span className="gradient-text">visually.</span>
+          <span
+            style={{
+              color: "#ea580c",
+            }}
+          >
+            visually.
+          </span>
         </motion.h2>
 
         <motion.p
@@ -30,7 +36,8 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-muted max-w-2xl mx-auto mb-12" style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)" }}
+          className="text-muted max-w-2xl mx-auto mb-12"
+          style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)" }}
         >
           Join thousands of developers who trust Next Zen for algorithms,
           workflow automation, and system design.
