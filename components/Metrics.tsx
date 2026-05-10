@@ -39,9 +39,9 @@ function AnimatedCounter({
 }
 
 const metrics = [
-  { value: 10000, suffix: "+", label: "Developers" },
-  { value: 1000000, suffix: "+", label: "Diagrams Created" },
-  { value: 500000, suffix: "+", label: "Executions" },
+  { value: 1000, suffix: "+", label: "Developers" },
+  { value: 1000, suffix: "+", label: "Diagrams Created" },
+  { value: 15000, suffix: "+", label: "Executions" },
 ];
 
 export default function Metrics() {
