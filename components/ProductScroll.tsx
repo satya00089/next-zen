@@ -493,7 +493,7 @@ const products = [
       "Design cloud infrastructure visually — Route 53, CloudFront, EKS, Aurora and more. Generate Terraform, apply live, and watch your stack deploy in real time.",
     url: "https://orchestrator.next-zen.dev?utm_source=next-zen.dev",
     features: ["Multi-Cloud", "Terraform Gen", "Live deploy status"],
-    accent: "#7DD3FC",
+    accent: "#4bbebe",
     Visual: OrchestratorVisual,
   },
 ];
