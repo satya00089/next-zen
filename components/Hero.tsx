@@ -3,12 +3,13 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FloatingMonoliths from "@/components/FloatingMonoliths";
+import { GeistPixelGrid } from "geist/font/pixel";
 
 // ── Headline lines ───────────────────────────────────────────────────────────
 const HEADLINE = [
-  { words: ["Empower", "Ideas."],          gradient: false },
-  { words: ["Build",   "Systems."],        gradient: false },
-  { words: ["Visualize", "Intelligence."], gradient: false },
+  { words: ["Empower", "Ideas."],          gradient: false, useGeistPixel: false },
+  { words: ["Build",   "Systems."],        gradient: false, useGeistPixel: true },
+  { words: ["Visualize", "Intelligence."], gradient: false, useGeistPixel: false },
 ] as const;
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -169,7 +170,7 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Headline — word by word, blur-unmask — Geist Sans */}
+        {/* Headline — word by word, blur-unmask — Geist Sans (per-line pixel toggle) */}
         <div
           style={{
             fontSize: "clamp(3rem, 7vw, 5.5rem)",
@@ -180,7 +181,15 @@ export default function Hero() {
           }}
         >
           {HEADLINE.map((line, li) => (
-            <div key={li}>
+            <div
+              key={li}
+              className={line.useGeistPixel ? GeistPixelGrid.variable : undefined}
+              style={
+                line.useGeistPixel
+                  ? { fontFamily: "var(--font-geist-pixel-grid), var(--font-geist-mono), monospace" }
+                  : undefined
+              }
+            >
               {line.words.map((word, wi) => (
                 <motion.span
                   key={`${li}-${wi}`}
