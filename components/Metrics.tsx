@@ -58,7 +58,10 @@ export default function Metrics() {
           <p className="text-accent text-sm font-medium tracking-widest uppercase mb-4">
             Community
           </p>
-          <h2 className="font-bold tracking-tight" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)" }}>
+          <h2
+            className="font-bold tracking-tight"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
+          >
             Growing Ecosystem
           </h2>
         </motion.div>
@@ -73,11 +76,14 @@ export default function Metrics() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="font-bold text-orange-600 mb-3" style={{ fontSize: "clamp(3rem, 5vw, 3.75rem)" }}>
-                <AnimatedCounter
-                  target={metric.value}
-                  suffix={metric.suffix}
-                />
+              <div
+                className="font-bold mb-3"
+                style={{
+                  fontSize: "clamp(3rem, 5vw, 3.75rem)",
+                  color: "#ea580c",
+                }}
+              >
+                <AnimatedCounter target={metric.value} suffix={metric.suffix} />
               </div>
               <p className="text-muted text-base">{metric.label}</p>
             </motion.div>
