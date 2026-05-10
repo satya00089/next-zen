@@ -2,104 +2,118 @@
 
 @theme {
   --color-*: initial;
-  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --hero-text: #fff;
-  /* Brand / accent colors */
-  --brand: #6366f1;
-  /* indigo-500 */
-  --accent: #ec4899;
-  /* Text colors */
-  --text-muted: #6b7280;
-  --text-secondary: #9ca3af;
-  /* Shadow values */
-  --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.2);
-  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.15);
-  --shadow-footer: 0 -4px 20px rgba(0, 0, 0, 0.08);
-  /* Card backgrounds */
-  --card-bg: rgba(255, 255, 255, 0.5);
-  --card-bg-hover: #ffffff;
-}
-
-html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --hero-text: #fff;
-  /* Brand / accent colors (adjusted for dark) */
-  --brand: #8b5cf6;
-  /* slightly brighter indigo */
-  --accent: #f472b6;
-  /* Text colors */
-  --text-muted: #d1d5db;
-  --text-secondary: #9ca3af;
-  /* Shadow values */
-  --shadow-sm: 0 8px 30px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.4);
-  --shadow-footer: 0 -4px 20px rgba(0, 0, 0, 0.3);
-  /* Card backgrounds */
-  --card-bg: rgba(31, 41, 55, 0.5);
-  --card-bg-hover: #1f2937;
+  --background: #050505;
+  --surface: #0E0E10;
+  --foreground: #F5F5F5;
+  --muted: #8A8A8A;
+  --accent: #7DD3FC;
+  --accent-violet: #A78BFA;
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(14, 14, 16, 0.8);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --color-text-muted: var(--text-muted);
-  --color-text-secondary: var(--text-secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-violet: var(--accent-violet);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  background: #050505;
+  color-scheme: dark;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
+  background: #050505;
+  color: #F5F5F5;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Accordion Product Cards */
-.products-accordion {
-  display: flex;
+::selection {
+  background: rgba(125, 211, 252, 0.3);
+  color: #F5F5F5;
 }
 
-.products-accordion .product-card {
-  flex: 1;
-  transition: all 700ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+/* Smooth scroll for Lenis */
+html.lenis, html.lenis body {
+  height: auto;
 }
 
-.products-accordion:has(.product-card:hover) .product-card:not(:hover) {
-  flex: 0 0 80px;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-.products-accordion .product-card:hover {
-  flex: 2;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
-.products-accordion:has(.product-card:hover) .product-card:not(:hover) .product-content {
-  opacity: 0;
-  pointer-events: none;
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.products-accordion:has(.product-card:hover) .product-card:not(:hover) .product-vertical-title {
-  opacity: 1;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.product-content {
-  opacity: 1;
-  transition: opacity 300ms ease;
+::-webkit-scrollbar-track {
+  background: #050505;
 }
 
-.product-vertical-title {
-  opacity: 0;
-  transition: opacity 300ms ease;
-  pointer-events: none;
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
+/* Glass card utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+}
 
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #7DD3FC 0%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

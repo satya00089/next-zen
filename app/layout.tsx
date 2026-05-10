@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/logo.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
@@ -116,10 +117,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased font-sans">
-        <ThemeProvider>
+      <body className="antialiased font-sans bg-background text-foreground">
           {children}
-        </ThemeProvider>
       </body>
     </html>
   );
