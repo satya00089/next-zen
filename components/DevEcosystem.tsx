@@ -172,7 +172,7 @@ function OrchestratorPreview() {
 
 const TABS = [
   {
-    id: "algo",
+    id: "learn-algo",
     label: "Learn Algo",
     accent: "#7DD3FC",
     tagline: "Watch algorithms think.",
@@ -181,7 +181,7 @@ const TABS = [
     Preview: AlgoPreview,
   },
   {
-    id: "diagram",
+    id: "diagrammatic",
     label: "Diagrammatic",
     accent: "#A78BFA",
     tagline: "Ideas become architecture.",
