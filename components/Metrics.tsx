@@ -8,9 +8,9 @@ function AnimatedCounter({
   suffix = "",
   duration = 2000,
 }: {
-  target: number;
-  suffix?: string;
-  duration?: number;
+  readonly target: number;
+  readonly suffix?: string;
+  readonly duration?: number;
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -59,7 +59,7 @@ export default function Metrics() {
             Community
           </p>
           <h2 className="font-bold tracking-tight" style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)" }}>
-            Growing ecosystem
+            Growing Ecosystem
           </h2>
         </motion.div>
 
@@ -73,7 +73,7 @@ export default function Metrics() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="font-bold gradient-text mb-3" style={{ fontSize: "clamp(3rem, 5vw, 3.75rem)" }}>
+              <div className="font-bold text-orange-600 mb-3" style={{ fontSize: "clamp(3rem, 5vw, 3.75rem)" }}>
                 <AnimatedCounter
                   target={metric.value}
                   suffix={metric.suffix}
