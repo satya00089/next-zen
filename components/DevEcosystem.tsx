@@ -192,7 +192,7 @@ const TABS = [
   {
     id: "orchestrator",
     label: "Orchestrator",
-    accent: "#7DD3FC",
+    accent: "#4bbebe",
     tagline: "Deploy without the guesswork.",
     description:
       "Design cloud infrastructure visually. Orchestrator generates production-ready Terraform and deploys to AWS, Azure, or GCP — live status included.",
