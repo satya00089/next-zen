@@ -108,10 +108,12 @@ export default function GridUniverse() {
   const raf = useRef(0);
 
   useEffect(() => {
-    const canvas = cvs.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const canvasOrNull = cvs.current;
+    if (!canvasOrNull) return;
+    const canvas: HTMLCanvasElement = canvasOrNull;
+    const ctxOrNull = canvas.getContext("2d");
+    if (!ctxOrNull) return;
+    const ctx: CanvasRenderingContext2D = ctxOrNull;
     let W = 0, H = 0;
 
     function resize() {
