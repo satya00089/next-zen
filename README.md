@@ -5,7 +5,7 @@ Modern tools for modern developers. This is the home page for [next-zen.dev](htt
 ## Products
 
 - **[Orchestrator](https://orchestrator.next-zen.dev)** - Streamline your workflow with powerful automation and orchestration capabilities
-- **[Diagrammatic](https://diagrammatic.next-zen.dev)** - Create beautiful diagrams and visualizations effortlessly
+- **[Diagramwise](https://diagramwise.com)** - Create beautiful diagrams and visualizations effortlessly
 
 ## Tech Stack
 
@@ -31,7 +31,7 @@ Powerful workflow automation and orchestration platform that streamlines your de
 
 🔗 [Visit Orchestrator](https://orchestrator.next-zen.dev)
 
-### 🎨 Diagrammatic
+### 🎨 Diagramwise
 Interactive system design and diagram creation tool perfect for architecture visualization and technical documentation.
 
 **Features:**
@@ -40,7 +40,7 @@ Interactive system design and diagram creation tool perfect for architecture vis
 - Real-time collaboration
 - System design practice problems
 
-🔗 [Visit Diagrammatic](https://diagrammatic.next-zen.dev)
+🔗 [Visit Diagramwise](https://diagramwise.com)
 
 ## Technology Stack
 
@@ -80,7 +80,7 @@ Visit [http://localhost:3000](http://localhost:3000) to see the landing page.
 
 ## Design Principles
 
-The landing page follows Diagrammatic's design principles:
+The landing page follows Diagramwise's design principles:
 
 1. **Clean & Modern:** Minimalist design with focus on content
 2. **Gradient Accents:** Subtle gradients for visual interest

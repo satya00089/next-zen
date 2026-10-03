@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://diagrammatic.next-zen.dev',
+      url: 'https://diagramwise.com',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,

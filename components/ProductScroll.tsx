@@ -471,12 +471,12 @@ const products = [
     Visual: AlgoVisual,
   },
   {
-    id: "diagrammatic",
-    title: "Diagrammatic",
+    id: "diagramwise",
+    title: "Diagramwise",
     subtitle: "Visualize complex systems.",
     description:
       "Build production-grade architecture diagrams in minutes. Drag services, connect flows, and let AI generate the full system — from microservices to CDN edges.",
-    url: "https://diagrammatic.next-zen.dev?utm_source=next-zen.dev",
+    url: "https://diagramwise.com?utm_source=next-zen.dev",
     features: [
       "AI-generated diagrams",
       "AWS, GCP & 50+ templates",

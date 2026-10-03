@@ -26,7 +26,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Learn Algo", href: "https://learn-algo.com?utm_source=next-zen.dev" },
-    { label: "Diagrammatic", href: "https://diagrammatic.next-zen.dev?utm_source=next-zen.dev" },
+    { label: "Diagramwise", href: "https://diagramwise.com?utm_source=next-zen.dev" },
     { label: "Orchestrator", href: "https://orchestrator.next-zen.dev?utm_source=next-zen.dev" },
   ];
 
