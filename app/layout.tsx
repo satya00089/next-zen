@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     default: 'Next Zen - Modern Development Tools for Workflow Automation & Visual Diagramming',
     template: '%s | Next Zen'
   },
-  description: "Discover Next Zen's suite of professional development tools: Orchestrator for powerful workflow automation and Diagrammatic for interactive system design diagrams. Build faster, visualize better, and streamline your development process.",
+  description: "Discover Next Zen's suite of professional development tools: Orchestrator for powerful workflow automation and Diagramwise for interactive system design diagrams. Build faster, visualize better, and streamline your development process.",
   keywords: [
     "Next Zen",
     "Orchestrator",
-    "Diagrammatic",
+    "Diagramwise",
     "workflow automation",
     "system design diagrams",
     "ER diagrams",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://next-zen.dev",
     siteName: "Next Zen",
     title: "Next Zen - Modern Development Tools for Workflow Automation & Visual Diagramming",
-    description: "Professional tools for modern developers. Orchestrator for workflow automation and Diagrammatic for system design visualization.",
+    description: "Professional tools for modern developers. Orchestrator for workflow automation and Diagramwise for system design visualization.",
     images: [
       {
         url: "/og-image.png",
@@ -107,9 +107,9 @@ export default function RootLayout({
                   },
                   {
                     "@type": "Product",
-                    "name": "Diagrammatic",
+                    "name": "Diagramwise",
                     "description": "Interactive system design and diagram creation tool",
-                    "url": "https://diagrammatic.next-zen.dev",
+                    "url": "https://diagramwise.com",
                   },
                 ],
               },

@@ -181,8 +181,8 @@ const TABS = [
     Preview: AlgoPreview,
   },
   {
-    id: "diagrammatic",
-    label: "Diagrammatic",
+    id: "diagramwise",
+    label: "Diagramwise",
     accent: "#A78BFA",
     tagline: "Ideas become architecture.",
     description:

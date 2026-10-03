@@ -168,7 +168,7 @@ const features = [
   {
     title: "Guided Help",
     description:
-      "Step-by-step walkthroughs from Diagrammatic. Build your first system design in minutes with contextual hints and templates.",
+      "Step-by-step walkthroughs from Diagramwise. Build your first system design in minutes with contextual hints and templates.",
     icon: (
       <svg
         width="24"
